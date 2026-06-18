@@ -1,5 +1,5 @@
-const axios = require('axios');
 require('dotenv').config();
+const axios = require('axios');
 const { getLocationId, getPublications, getProductByHandle, updateInventory } = require('./shopifyFunctions');
 
 async function getCdoProducts() {
@@ -22,11 +22,11 @@ async function updateProducts() {
     const productPublications = await getPublications();
     for (const product of products) {
         try {
-            // if (product.skuPadre !== 'PET 008') continue; // If para pruebas con un producto específico
+            // if (product.code !== 'BP190') continue; // If para pruebas con un producto específico
             const activeVariants = product.variants;
 
             const handle = `cdo-${product.code}`.trim().toLowerCase().replace(/[+]/g, 'mas').replace(/[\s]+/g, '');
-            let shopifyProduct = await getProductByHandle(handle);
+            const shopifyProduct = await getProductByHandle(handle);
             if (!shopifyProduct) {
                 continue;
             }
@@ -54,7 +54,7 @@ async function updateProducts() {
             }
             // break;
         } catch (error) {
-            console.error(`Error actualizando el producto ${product.nombrePadre} ${product.skuPadre}:`, error);
+            console.error(`Error actualizando el producto ${product.name} ${product.code}:`, error);
         }
     }
 }
