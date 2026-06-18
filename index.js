@@ -1,6 +1,6 @@
 require('dotenv').config();
 const axios = require('axios');
-const { getLocationId, getPublications, getProductByHandle, updateInventory } = require('./shopifyFunctions');
+const { getLocationId, getProductByHandle, updateInventory } = require('./shopifyFunctions');
 
 async function getCdoProducts() {
     const response = await axios.get(
@@ -19,7 +19,6 @@ async function updateProducts() {
     const products = await getCdoProducts();
 
     const locationId = await getLocationId();
-    const productPublications = await getPublications();
     for (const product of products) {
         try {
             // if (product.code !== 'BP190') continue; // If para pruebas con un producto específico
