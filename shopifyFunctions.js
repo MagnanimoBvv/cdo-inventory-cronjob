@@ -93,4 +93,4 @@ async function updateInventory(input) {
     return response.data.data.inventorySetQuantities.inventoryAdjustmentGroup;
 }
 
-module.exports = { getLocationId, getPublications, getProductByHandle, updateInventory };
+module.exports = { getLocationId, getProductByHandle, updateInventory };
