@@ -62,7 +62,7 @@ async function updateProducts(store, products) {
             }
             // break;
         } catch (error) {
-            console.error(`[${store.name}] Error actualizando ${product.name} ${product.code}}:`, error);
+            console.error(`[${store.name}] Error actualizando ${product.name} ${product.code}:`, error);
         }
     }
 }
